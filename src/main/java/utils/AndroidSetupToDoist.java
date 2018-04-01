@@ -1,6 +1,7 @@
-package todoist;
+package utils;
 
 import io.appium.java_client.android.AndroidDriver;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.io.File;
@@ -10,6 +11,8 @@ import java.net.URL;
 public class AndroidSetupToDoist {
 
     protected AndroidDriver driver;
+    private static final ThreadLocal<AndroidDriver> androidDriver = new ThreadLocal<AndroidDriver>();
+    public static AndroidDriver getDriver () {return androidDriver.get();}
 
     protected void prepareAndroidForAppium() throws MalformedURLException {
         File appDir = new File("app");
